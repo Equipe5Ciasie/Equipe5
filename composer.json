@@ -1,5 +1,5 @@
 {
-    "name": "Trivial Navigo",
+    "name": "gdp",
     "type": "project",
     "require": {
         "illuminate/database": "5.5.*",
