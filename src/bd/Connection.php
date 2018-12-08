@@ -1,6 +1,6 @@
 <?php
 
-namespace trivial\bd;
+namespace equipe5\bd;
 
 /**
  * Class Connection
