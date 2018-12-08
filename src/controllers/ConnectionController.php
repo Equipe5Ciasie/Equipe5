@@ -1,12 +1,12 @@
 <?php
 
-namespace trivial\controllers;
+namespace equipe5\controllers;
 
-use trivial\models as m;
-use trivial\controllers\Authentication;
+use equipe5\models as m;
+use equipe5\controllers\Authentication;
 use \Slim\Views\Twig as twig;
-use trivial\views\ConnexionView;
-use trivial\views\CreateAccountView;
+use equipe5\views\ConnexionView;
+use equipe5\views\CreateAccountView;
 
 /**
  * Class ConnectionController
@@ -30,15 +30,13 @@ class ConnectionController {
 	 * @param args
 	 */
 	public function displayConnection($request, $response, $args) {
-		if (Authentication::checkConnection()) {
-			$pseudo = "Bienvenue ".$_SESSION['pseudoPlayer'];
-		}
-		else {
-			$pseudo = "";
-		}
-		return $this->view->render($response, 'ConnexionView.html.twig', [
-			'pseudo' => $pseudo,
-		]);
+		// if (Authentication::checkConnection()) {
+		// 	$pseudo = "Bienvenue ".$_SESSION['pseudoPlayer'];
+		// }
+		// else {
+		// 	$pseudo = "";
+		// }
+		return $this->view->render($response, 'ConnexionView.html.twig');
 	}
 
 	/**
@@ -104,5 +102,9 @@ class ConnectionController {
 	public static function checkDestroySession($request, $response, $args) {
 		Authentication::destroySession();
 	}
+
+	public function displayCreateAccount($request, $response, $args) {
+		return $this->view->render($response, 'CreateAccountView.html.twig', []);
+    }
 
 }

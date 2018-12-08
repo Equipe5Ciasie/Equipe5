@@ -3,6 +3,8 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 use equipe5\controllers\HomeController as HomeController;
+use equipe5\controllers\ConnectionController as ConnectionController;
+
 
 
 $configuration = [
@@ -30,5 +32,10 @@ $container['EXEMPLEController'] = function ($c){
 $container['HomeController'] = function ($c){
     $view = $c->get('view');
     return new HomeController($view);
+};
+
+$container['ConnectionController'] = function ($c){
+    $view = $c->get('view');
+    return new ConnectionController($view);
 };
 ?>
