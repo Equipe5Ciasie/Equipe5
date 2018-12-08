@@ -32,7 +32,7 @@ require('container.php');
 
 $app = new \Slim\App($container);
 
-$app->get('/', 'EXEMPLEController:displayHome')->setName('Home');
+$app->get('/', 'HomeController:displayHome')->setName('Home');
 
 $app->get('/Disconnection', function($request, $response, $args){
 	$controller = $this['EXEMPLEController'];

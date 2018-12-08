@@ -5,7 +5,7 @@ namespace trivial\controllers;
 /**
  * Class EXEMPLE
  */
-class EXEMPLE {
+class EXEMPLEController {
 
     protected $view;
 

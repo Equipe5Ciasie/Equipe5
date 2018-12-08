@@ -9,6 +9,7 @@ use trivial\controllers\HomeController as HomeController;
 use trivial\controllers\JoinController as JoinController;
 use trivial\controllers\PlayerController as PlayerController;
 use trivial\controllers\DiceController as DiceController;
+use trivial\controllers\EXEMPLEController as EXEMPLEController;
 
 $configuration = [
     'settings' => [
