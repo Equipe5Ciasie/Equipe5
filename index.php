@@ -4,6 +4,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use Illuminate\Database\Capsule\Manager as DB;
 use equipe5\bd\Connection;
+// use equipe5\controllers\ConnectionController;
+
 
 Connection::setConfig('src/conf/conf.ini');
 $db = Connection::makeConnection();
@@ -33,6 +35,10 @@ require('container.php');
 $app = new \Slim\App($container);
 
 $app->get('/', 'HomeController:displayHome')->setName('Home');
+
+$app->get('/CreateAccount', 'ConnectionController:displayCreateAccount')->setName('CreateAccount');
+
+
 
 $app->get('/Disconnection', function($request, $response, $args){
 	$controller = $this['EXEMPLEController'];

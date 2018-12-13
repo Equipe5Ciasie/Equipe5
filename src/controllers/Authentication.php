@@ -1,6 +1,6 @@
 <?php
 
-namespace trivial\controllers;
+namespace equipe5\controllers;
 
 /**
  * Class Authentication
