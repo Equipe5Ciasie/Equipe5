@@ -28,15 +28,13 @@ class HomeController {
 		return $this->view->render($response, 'HomeView.html.twig');
     }
     public function displayHomeConnect($request, $response, $args) {
-		// if (Authentication::checkConnection()) {		
-		// 	$resDisplayBoxMember = BoxController::displayBoxMember($request, $response, $args);
-        // 	$nameMember = $_SESSION['forenameMember'];
+		
+        	$email = $_SESSION['email'];
         
-			return $this->view->render($response, 'HomeConnectView.html.twig', [
-	
+            return $this->view->render($response, 'HomeConnectView.html.twig', [
+				'email' => $email,
 			]);
-        
-    }
+            }
 
 	
 }
