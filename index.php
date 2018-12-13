@@ -38,6 +38,8 @@ $app->get('/', 'HomeController:displayHome')->setName('Home');
 
 $app->get('/CreateAccount', 'ConnectionController:displayCreateAccount')->setName('CreateAccount');
 
+$app->get('/Connection', 'ConnectionController:displayConnection')->setName('Connection');
+
 
 
 $app->get('/Disconnection', function($request, $response, $args){

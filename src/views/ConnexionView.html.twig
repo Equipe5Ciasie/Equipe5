@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+{% include 'HeadView.html.twig' %} 
+<body>
+    {% include 'HeaderAuthentifiateView.html.twig' %}
+    <div class="main_container">
+        <div class="screen">
+            <form class="formMenu" action="/connection" method="POST">
+                <p>
+                    <label for="email"></label>
+            	    <input type="email" name="email" placeholder="Adresse email ..."/>
+                </p>
+                <p>
+                    <label for="password"></label>
+                    <input type="password" name="password" placeholder="Mot de passe ..."/>
+                </p>
+                <button type="submit" class="boutton">Connexion</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

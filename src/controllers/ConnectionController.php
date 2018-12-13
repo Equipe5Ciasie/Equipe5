@@ -76,21 +76,17 @@ class ConnectionController {
 
 	// Method that checks the connection
 	public static function checkTheConnection(){
-		$email = $_POST['email'];
-		$mdp = $_POST['mdp'];
-		$nb = m\Joueur::where('adresseMail', '=', $email);
-		if ($nb->count() != 1) {
-			echo "Email invalide" ;
+		$user = User::byMail(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
+		if($user){
+			if(password_verify($_POST['password'], $user->password)){
+				$_SESSION['id'] = $user->id;
+				$_SESSION['name'] = $user->name;
+			} else {
+				$app->flash('error', "L'adresse email ou le mot de passe est invalide");
+			}
+		} else {
+			$app->flash('error', "L'adresse email ou le mot de passe est invalide");
 		}
-		else {	
-			if (password_verify($mdp, $nb->first()->password)) {
-				$nb = $nb->first();
-				Authentication::instantiateSession($nb->idJoueur, $nb->pseudoJoueur);
-			}
-			else {
-				echo "Mot de passe invalide";
-			}
-		} 
 	}
 
 	/**

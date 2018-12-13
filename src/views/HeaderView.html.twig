@@ -8,39 +8,36 @@
 				<li><a href="{{base_url()}}/CreateAccount">Inscription</a></li>
 			</ul>
 		</nav>
-		
-			<div class="pres_header">
+		<div class="pres_header">
 			<h1>Equipe5</h1>
-		
 		</div>
-		 <nav class="nav_menu">
-		 <ul class="list_grid_menu">
-		<a class="homeButton fas fa-home" href="{{base_url()}}/"></a>
-		</ul>
+		<nav class="nav_menu">
+		 	<ul class="list_grid_menu">
+				<a class="homeButton fas fa-home" href="{{base_url()}}/"></a>
+			</ul>
 		</nav>
 				{% else %}
 				<li class="li">Bienvenue sur MyGiftBox {{nameMember}}</li>
 				<li class="grid_item_header"><a href="{{base_url()}}/MyAccount">Mon Compte</a></li>
 				<li class="grid_item_header"><a href="{{base_url()}}/Exit">Déconnexion</a></li>
+			</ul>
 		</nav>
-		</ul>
-			<div class="pres_header">
+		<div class="pres_header">
 			<h1>MyGiftBox</h1>
 			<p class="descr_header">Concocter de fabuleux présents pour vos amis.</p>
 		</div>
 		<nav class="nav_menu">
-		<ul class="list_grid_menu">
-			<a class="homeButton fas fa-home" href="{{base_url()}}/"></a>
-			<li ><a href="{{base_url()}}/ConsultCatalog">Consulter Catalogue</a></li>
-			<li><a href="{{base_url()}}/CreateBox">Créer Un Coffret</a></li>
-			<li><a href="{{base_url()}}/HomeConnect">Voir Vos Coffrets</a></li>
-			{% if roleMember == 1 %}
+			<ul class="list_grid_menu">
+				<a class="homeButton fas fa-home" href="{{base_url()}}/"></a>
+				<li ><a href="{{base_url()}}/ConsultCatalog">Consulter Catalogue</a></li>
+				<li><a href="{{base_url()}}/CreateBox">Créer Un Coffret</a></li>
+				<li><a href="{{base_url()}}/HomeConnect">Voir Vos Coffrets</a></li>
+				{% if roleMember == 1 %}
 				<li><a href="{{base_url()}}/AdminPrestations">Admin Prestations</a></li>
-			{% endif %}
-		</ul>
+				{% endif %}
+			</ul>
 		</nav>
 				{% endif %}
-		
 		<hr/>
 	</div>
 </header>

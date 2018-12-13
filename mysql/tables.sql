@@ -17,6 +17,7 @@ CREATE TABLE `appels_offres`(
     `titre` text NOT NULL,
     `description` text NOT NULL,
     `contenu` text NOT NULL,
+    `user_id` int(11) NOT NULL,
     PRIMARY KEY (`id`)
 );
 
