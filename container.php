@@ -2,13 +2,8 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-use trivial\controllers\GameController as GameController;
-use trivial\controllers\ConnectionController as ConnectionController;
-use trivial\controllers\SaloonController as SaloonController;
-use trivial\controllers\HomeController as HomeController;
-use trivial\controllers\JoinController as JoinController;
-use trivial\controllers\PlayerController as PlayerController;
-use trivial\controllers\DiceController as DiceController;
+use equipe5\controllers\HomeController as HomeController;
+
 
 $configuration = [
     'settings' => [
@@ -31,4 +26,9 @@ $container['EXEMPLEController'] = function ($c){
     return new EXEMPLEController($view);
 };
 
+
+$container['HomeController'] = function ($c){
+    $view = $c->get('view');
+    return new HomeController($view);
+};
 ?>

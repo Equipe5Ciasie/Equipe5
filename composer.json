@@ -1,5 +1,5 @@
 {
-    "name": "gdp",
+    "name": "Equipe5",
     "type": "project",
     "require": {
         "illuminate/database": "5.5.*",
@@ -9,7 +9,7 @@
     },
     "autoload": {
         "psr-4": {
-            "trivial\\": "src/"
+            "equipe5\\": "src/"
         }
     }
 }
