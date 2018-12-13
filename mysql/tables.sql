@@ -2,15 +2,31 @@
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users`(
     `id` int(11) NOT NULL AUTO_INCREMENT,
+    `nom` text NOT NULL,
+    `siret` text NOT NULL,
     `email` text NOT NULL,
     `password` char(128) NOT NULL,
-    `account_type` int(11) NOT NULL, 
-    `metier_id` int(11) NOT NULL,
+    `account_type` int(11) NOT NULL,
     PRIMARY KEY (`id`)
 );
 INSERT INTO `users`(`id`, `email`, `password`, `account_type`) VALUES
 (1, 'root@root.fr', '$2y$10$tMpttxj11mBpb2vAQclug.bz5V41qKTiSRF1KBdbJzuKTYMXiwJiK', 3);
 
+-- table entreprise
+DROP TABLE IF EXISTS `entreprise`;
+CREATE TABLE `entreprise`(
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `domaine` text NOT NULL,
+    PRIMARY KEY (`id`)
+);
+
+-- table MOA
+DROP TABLE IF EXISTS `MOA`;
+CREATE TABLE `MOA`(
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `ville` text NOT NULL,
+    PRIMARY KEY (`id`)
+);
 -- table APPELS_OFFRES
 DROP TABLE IF EXISTS `appels_offres`;
 CREATE TABLE `appels_offres`(

@@ -55,11 +55,26 @@ class ConnectionController {
 	 * @param emailUser
 	 */
 	public static function createUser($mdp, $email,$type,$siret,$nom){
-		$r = new m\User();
-		$r->email = $email;
-		$r->password = $mdp;
-		$r->account_type = $type;
-		$r->save();
+		$user = new m\User();
+		$user->email = $email;
+		$user->nom = $nom;
+		$user->siret = $siret;
+		$user->password = $mdp;
+		$user->account_type = $type;
+		$user->save();
+		return $user->id;
+	}
+	public static function createEntreprise($id, $domaine){
+		$entreprise = new m\Entreprise();
+		$entreprise->id = $id;
+		$entreprise->domaine = $domaine;
+		$entreprise->save();
+	}
+	public static function createMOA($id, $ville){
+		$MOA = new m\MOA();
+		$MOA->id = $id;
+		$MOA->ville = $ville;
+		$MOA->save();
 	}
 
 	// Method that checks the creating of an account
@@ -70,13 +85,16 @@ class ConnectionController {
 		$type = $_POST['type'];
 		$siret= $_POST['siret'];
 		$nom = $_POST['nom'];
-		$adresse = $_POST['adresse'];
-
-		var_dump($mdp,$email,$type,$siret,$nom,$adresse);
 
 		// Function that allows password hashing
 		$mdp = password_hash($_POST['password'], PASSWORD_BCRYPT);
-		self::createUser( $mdp, $email,$type,$siret,$nom);
+		$id=self::createUser( $mdp, $email,$type,$siret,$nom);
+		if($type==2){
+			self::createEntreprise( $id, $_POST['domaine']);
+		}
+		else{
+			self::createMOA( $id, $_POST['ville']);
+		}
 		self::checkTheConnection();
 	}
 

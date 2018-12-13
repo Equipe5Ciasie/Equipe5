@@ -18,21 +18,24 @@ class HomeController {
 
 	public function displayHome($request, $response,$args) {
         
-		// if (Authentication::checkConnection()) {
-        //     $nameMember = $_SESSION['forenameMember'];
-        //     $roleMember = $_SESSION['roleMember'];
-        // } else {
-        //     $nameMember = "";
-        //     $roleMember = 0;
-        // }
-		return $this->view->render($response, 'HomeView.html.twig');
+		if (Authentication::checkConnection()!=false) {
+            $email = $_SESSION['email'];
+            $type = $_SESSION['type'];
+         } else {
+             $email = "";
+             $type = 0;
+         }
+		return $this->view->render($response, 'HomeView.html.twig', [
+            'email' => $email,
+            'type' => $type,
+        ]);
     }
-    public function displayHomeConnect($request, $response, $args) {
-		
-        	$email = $_SESSION['email'];
+
+    public function displayVosOffres($request, $response, $args) {
         
-            return $this->view->render($response, 'HomeConnectView.html.twig', [
-				'email' => $email,
+            return $this->view->render($response, 'HomeOffre.html.twig', [
+                'email' => $_SESSION['email'],
+                'type' => $_SESSION['type'],
 			]);
             }
 

@@ -4,7 +4,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use Illuminate\Database\Capsule\Manager as DB;
 use equipe5\bd\Connection;
-// use equipe5\controllers\ConnectionController;
+use equipe5\controllers\Authentication;
 // use equipe5\controllers\ConnectionController;
 
 
@@ -61,17 +61,22 @@ $app->post('/Connection', function($request, $response, $args){
 		$this->flash->addMessage('error', "Adresse email ou mot de passe invalide.");
 		return $response->withRedirect($this->router->pathFor('Connection'));
 	}
-})->setName("checkAccountCreation");
+})->setName("checkAccountConnection");
 
 $app->get('/HomeConnect', function($request, $response, $args){
-	// if (Authentication::checkTheConnection()) {
+	 if (Authentication::checkConnection()!=false) {
 		$controller = $this['HomeController'];
-		$displayHomeConnect = $controller->displayHomeConnect($request, $response, $args);
-	// }
-	// else {
-	// 	$router = $this->router;
-	// 	return $response->withRedirect($router->pathFor('Home', []));
-	// }
+		if($_SESSION["type"]==3)
+			$displayHomeConnect = $controller->displayVosOffres($request, $response, $args);
+		else if(($_SESSION["type"]==2)){
+			$router = $this->router;
+			return $response->withRedirect($router->pathFor('Consulter', []));
+		}
+	 }
+	 else {
+	 	$router = $this->router;
+	 	return $response->withRedirect($router->pathFor('Home', []));
+	 }
 	
 })->setName('HomeConnect');
 
