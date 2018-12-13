@@ -7,6 +7,7 @@ use equipe5\controllers\Authentication;
 use \Slim\Views\Twig as twig;
 use equipe5\views\ConnexionView;
 use equipe5\views\CreateAccountView;
+use equipe5\models\User;
 
 /**
  * Class ConnectionController
@@ -44,32 +45,40 @@ class ConnectionController {
 	}
 
 	/**
-	 * Method that creates a player
-	 * @param pseudoPlayer
-	 * @param passwordPlayer
-	 * @param emailPlayer
+	 * Method that creates a User
+	 * @param em$emailUser
+	 * @param passwordUser
+	 * @param emailUser
 	 */
-	public static function createPlayer($pseudoPlayer, $passwordPlayer, $emailPlayer){
-		$r = new m\Joueur();
-		$r->pseudoJoueur = $pseudoPlayer;
-		$r->adresseMail = $emailPlayer;
-		$r->password = $passwordPlayer;
+	public static function createUser($mdp, $email,$type,$siret,$nom){
+		$r = new m\User();
+		$r->email = $email;
+		$r->password = $mdp;
+		$r->account_type = $type;
 		$r->save();
 	}
 
 	// Method that checks the creating of an account
 	public static function checkAccountCreation() {
-		$pseudo = $_POST['pseudo'];
+		
 		$mdp = $_POST['mdp'];
 		$email = $_POST['email'];
+		$type = $_POST['type'];
+		$siret= $_POST['siret'];
+		$nom = $_POST['nom'];
+		$adresse = $_POST['adresse'];
+
+		var_dump($mdp,$email,$type,$siret,$nom,$adresse);
+
 		// Function that allows password hashing
 		$mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT, ['cost'=>12]);
-		self::createPlayer($pseudo, $mdp, $email);
-		self::checkTheConnection();
+		self::createUser( $mdp, $email,$type,$siret,$nom);
+		//self::checkTheConnection();
 	}
 
 	// Method that checks the connection
 	public static function checkTheConnection(){
+		
 		$user = User::byMail(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
 		if($user){
 			if(password_verify($_POST['password'], $user->password)){

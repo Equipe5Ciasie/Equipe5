@@ -1,66 +1,70 @@
 {% extends 'layouts/master.twig' %}
 
-{% block content %}
-<div class ="screen">
-	<h3> Vous êtes une entreprise </h3>
-	<form class="formMenu" action="" method="post">
-		<p>
-        	<label for="nom" id="labelnom"></label>
-        	<input type="text" name="nom" id="nom" placeholder="Nom..."/>
-    	</p>
-		<p>
-        	<label for="nom" id="labelnom"></label>
-        	<input type="text" name="nom" id="nom" placeholder="N°Siret"/>
-    	</p>
-        <p>
-        	<label for="prenom" id="labelmdp"></label>
-        	<input type="text" name="prenom" id="prenom" placeholder="Adresse"/>
-    	</p>
-        <p>
-        	<label for="email" id="labelemail"></label>
-        	<input type="text" name="email" id="email" placeholder="Email de contact"/>
-    	</p>
-		  <p>
-        	<label for="email" id="labelemail"></label>
-        	<input type="text" name="email" id="email" placeholder="Type d'entreprise"/>
-    	</p>
-		<p>
-        	<label for="mdp" id="labelmdp"></label>
-        	<input type="password" name="mdp" id="mdp"placeholder="Mot de passe"/>
-    	</p>
-		<button type="submit" class="boutton">Valider</button>
-		<br><br>
-	</form>
-</div>
-<div class ="screen">
-	<h3> Vous êtes un organisme de type MOA </h3>
-	<form class="formMenu" action="" method="post">
-		<p>
-        	<label for="nom" id="labelnom"></label>
-        	<input type="text" name="nom" id="nom" placeholder="Nom..."/>
-    	</p>
-		<p>
-        	<label for="nom" id="labelnom"></label>
-        	<input type="text" name="nom" id="nom" placeholder="N°Siret"/>
-    	</p>
-        <p>
-        	<label for="prenom" id="labelmdp"></label>
-        	<input type="text" name="prenom" id="prenom" placeholder="Adresse"/>
-    	</p>
-        <p>
-        	<label for="email" id="labelemail"></label>
-        	<input type="text" name="email" id="email" placeholder="Email de contact"/>
-    	</p>
-		  <p>
-        	<label for="email" id="labelemail"></label>
-        	<input type="text" name="email" id="email" placeholder="Type d'organisme"/>
-    	</p>
-		<p>
-        	<label for="mdp" id="labelmdp"></label>
-        	<input type="password" name="mdp" id="mdp"placeholder="Mot de passe"/>
-    	</p>
-		<button type="submit" class="boutton">Valider</button>
-		<br><br>
-	</form>
-</div>
-{% endblock %}
+
+	<div class="main_container">
+        <div class ="screen">
+		<h3> Vous êtes une entreprise </h3>
+		<form class="formMenu" action="" method="post">
+			<p>
+            	<label for="nom" id="labelnom"></label>
+            	<input type="text" name="nom" id="nom" placeholder="Nom..."/>
+        	</p>
+			<p>
+            	<label for="siret" id="labelnom"></label>
+            	<input type="text" name="siret" id="nom" placeholder="N°Siret"/>
+        	</p>
+            <p>
+            	<label for="adresse" id="labelmdp"></label>
+            	<input type="text" name="adresse" id="prenom" placeholder="Adresse"/>
+        	</p>
+            <p>
+            	<label for="email" id="labelemail"></label>
+            	<input type="text" name="email" id="email" placeholder="Email de contact"/>
+        	</p>
+			  <p>
+            	<label for="type" id="labelemail"></label>
+            	<input type="text" name="type" id="email" placeholder="Type d'entreprise"/>
+        	</p>
+			<p>
+            	<label for="mdp" id="labelmdp"></label>
+            	<input type="password" name="mdp" id="mdp"placeholder="Mot de passe"/>
+        	</p>
+			<button type="submit" class="boutton">Valider</button>
+			<br><br>
+	 	</form>
+         </div>
+		 <div class ="screen">
+		<form class="formMenu" action="" method="post">
+		<h3> Vous êtes un organisme de type MOA </h3>
+				<p>
+            	<label for="nom" id="labelnom"></label>
+            	<input type="text" name="nom" id="nom" placeholder="Nom..."/>
+        	</p>
+			<p>
+            	<label for="nom" id="labelnom"></label>
+            	<input type="text" name="nom" id="nom" placeholder="N°Siret"/>
+        	</p>
+            <p>
+            	<label for="prenom" id="labelmdp"></label>
+            	<input type="text" name="prenom" id="prenom" placeholder="Adresse"/>
+        	</p>
+            <p>
+            	<label for="email" id="labelemail"></label>
+            	<input type="text" name="email" id="email" placeholder="Email de contact"/>
+        	</p>
+			  <p>
+            	<label for="email" id="labelemail"></label>
+            	<input type="text" name="email" id="email" placeholder="Type d'organisme"/>
+        	</p>
+			<p>
+            	<label for="mdp" id="labelmdp"></label>
+            	<input type="password" name="mdp" id="mdp"placeholder="Mot de passe"/>
+        	</p>
+			<button type="submit" class="boutton">Valider</button>
+			<br><br>
+	 	</form>
+         </div>
+    </div> 
+</body>
+</html>
+>>>>>>> connexion

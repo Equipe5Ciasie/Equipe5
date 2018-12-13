@@ -26,5 +26,17 @@ class HomeController {
         //     $roleMember = 0;
         // }
 		return $this->view->render($response, 'HomeView.html.twig');
-	}
+    }
+    public function displayHomeConnect($request, $response, $args) {
+		// if (Authentication::checkConnection()) {		
+		// 	$resDisplayBoxMember = BoxController::displayBoxMember($request, $response, $args);
+        // 	$nameMember = $_SESSION['forenameMember'];
+        
+			return $this->view->render($response, 'HomeConnectView.html.twig', [
+	
+			]);
+        
+    }
+
+	
 }
