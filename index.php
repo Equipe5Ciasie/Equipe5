@@ -5,6 +5,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 use Illuminate\Database\Capsule\Manager as DB;
 use equipe5\bd\Connection;
 // use equipe5\controllers\ConnectionController;
+// use equipe5\controllers\ConnectionController;
+
 
 
 Connection::setConfig('src/conf/conf.ini');
@@ -55,7 +57,7 @@ $app->post('/Connection', function($request, $response, $args){
 })->setName("checkAccountCreation");
 
 $app->get('/HomeConnect', function($request, $response, $args){
-	// if (Authentication::checkConnection()) {
+	// if (Authentication::checkTheConnection()) {
 		$controller = $this['HomeController'];
 		$displayHomeConnect = $controller->displayHomeConnect($request, $response, $args);
 	// }
@@ -63,10 +65,11 @@ $app->get('/HomeConnect', function($request, $response, $args){
 	// 	$router = $this->router;
 	// 	return $response->withRedirect($router->pathFor('Home', []));
 	// }
+	
 })->setName('HomeConnect');
 
 $app->get('/Disconnection', function($request, $response, $args){
-	$controller = $this['EXEMPLEController'];
+	$controller = $this['ConnectionController'];
 	$controller->checkDestroySession($request, $response, $args);
 	$router = $this->router;
 	return $response->withRedirect($router->pathFor('Home', []));

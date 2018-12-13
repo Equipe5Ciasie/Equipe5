@@ -61,7 +61,7 @@ class ConnectionController {
 	// Method that checks the creating of an account
 	public static function checkAccountCreation() {
 		
-		$mdp = $_POST['mdp'];
+		$mdp = $_POST['password'];
 		$email = $_POST['email'];
 		$type = $_POST['type'];
 		$siret= $_POST['siret'];
@@ -73,7 +73,7 @@ class ConnectionController {
 		// Function that allows password hashing
 		$mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT, ['cost'=>12]);
 		self::createUser( $mdp, $email,$type,$siret,$nom);
-		//self::checkTheConnection();
+		self::checkTheConnection();
 	}
 
 	// Method that checks the connection
@@ -89,7 +89,7 @@ class ConnectionController {
 		} else {	
 			if (password_verify($password, $user->first()->password)) {
 				$user = $user->first();
-				//Authentication::instantiateSession($user->nomMembre, $user->prenomMembre, $user->mailMembre, $user->idMembre, $user->role);
+				Authentication::instantiateSession($user->email);
 			} else {
 				echo "Mot de passe invalide";
 			}
