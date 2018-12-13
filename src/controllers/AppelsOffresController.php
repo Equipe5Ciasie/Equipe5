@@ -19,6 +19,10 @@ class AppelsOffresController {
     }
 
     public function displayAppelOffrePage($request, $response, $args){
-        return $this->view->render($response, 'AppelOffreView.twig', ['appel_offre' => AO::byId($args['id'])]);
+        return $this->view->render($response, 'AppelOffreView.twig', ['ao' => AO::byId($args)]);
+    }
+
+    public function displayAnswerForm($request, $response, $args){
+        return $this->view->render($response, 'ReponseAppelOffre.twig', ['ao_id' => $args]);
     }
 }

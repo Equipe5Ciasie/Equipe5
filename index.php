@@ -82,10 +82,12 @@ $app->get('/Disconnection', function($request, $response, $args){
 	return $response->withRedirect($router->pathFor('Home', []));
 })->setName('Disconnection');
 
-$app->get('/Consulter', 'AppelsOffresController:displayListPage')->setName('Consulter');
+$app->get('/AppelsOffres', 'AppelsOffresController:displayListPage')->setName('Consulter');
 
-$app->get('/AppelOffre:id', function($request, $response, $args){
-	$this['AppelsOffresController']->displayAppelOffrePage($args['id'], $response);
+$app->get('/AppelsOffres/{id}', function($request, $response, $args){
+	$this['AppelsOffresController']->displayAppelOffrePage($request, $response, $args['id']);
 })->setName('Appeloffre');
+
+$app->get('/AppelsOffres/{id}/repondre', 'AppelsOffresController:displayAnswerForm')->setName('RepondreAppelOffre');
 
 $app->run();

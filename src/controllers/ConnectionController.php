@@ -109,6 +109,4 @@ class ConnectionController {
 		return $this->view->render($response, 'CreateAccountView.html.twig', []);
     }
 
-
-
 }
