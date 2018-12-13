@@ -79,17 +79,23 @@ class ConnectionController {
 	// Method that checks the connection
 	public static function checkTheConnection(){
 		
-		$user = User::byMail(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
-		if($user){
-			if(password_verify($_POST['password'], $user->password)){
-				$_SESSION['id'] = $user->id;
-				$_SESSION['name'] = $user->name;
+
+		$mail = filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
+        $password = filter_var($_POST['password'],FILTER_SANITIZE_STRING);
+
+		$user = User::where('email', '=', $mail);
+		if ($user->count() != 1) {
+			echo "Email invalide";
+		} else {	
+			if (password_verify($password, $user->first()->password)) {
+				$user = $user->first();
+				//Authentication::instantiateSession($user->nomMembre, $user->prenomMembre, $user->mailMembre, $user->idMembre, $user->role);
 			} else {
-				$app->flash('error', "L'adresse email ou le mot de passe est invalide");
+				echo "Mot de passe invalide";
 			}
-		} else {
-			$app->flash('error', "L'adresse email ou le mot de passe est invalide");
-		}
+        }
+
+
 	}
 
 	/**
