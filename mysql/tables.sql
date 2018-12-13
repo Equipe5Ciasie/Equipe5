@@ -9,7 +9,7 @@ CREATE TABLE `users`(
     PRIMARY KEY (`id`)
 );
 INSERT INTO `users`(`id`, `email`, `password`, `account_type`) VALUES
-(1, 'root', '$2y$10$tMpttxj11mBpb2vAQclug.bz5V41qKTiSRF1KBdbJzuKTYMXiwJiK', 3);
+(1, 'root@root.fr', '$2y$10$tMpttxj11mBpb2vAQclug.bz5V41qKTiSRF1KBdbJzuKTYMXiwJiK', 3);
 
 -- table APPELS_OFFRES
 DROP TABLE IF EXISTS `appels_offres`;

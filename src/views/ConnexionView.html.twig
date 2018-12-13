@@ -3,7 +3,7 @@
 {% block content %}
 <h2> Se connecter </h2>
 <div class="screen">
-    <form class="formMenu" action="/Connection" method="POST">
+    <form class="formMenu" action="{{ base_url() }}/Connection" method="POST">
         <p>
             <label for="email"></label>
     	    <input type="email" name="email" placeholder="Adresse email ..."/>
