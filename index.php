@@ -40,8 +40,6 @@ $app->get('/CreateAccount', 'ConnectionController:displayCreateAccount')->setNam
 
 $app->get('/Connection', 'ConnectionController:displayConnection')->setName('Connection');
 
-
-
 $app->get('/Disconnection', function($request, $response, $args){
 	$controller = $this['EXEMPLEController'];
 	$controller->checkDestroySession($request, $response, $args);
