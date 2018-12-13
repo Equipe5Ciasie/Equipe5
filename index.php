@@ -38,8 +38,25 @@ $app->get('/', 'HomeController:displayHome')->setName('Home');
 
 $app->get('/CreateAccount', 'ConnectionController:displayCreateAccount')->setName('CreateAccount');
 
+$app->post('/CreateAccount', function($request, $response, $args){
+	$controller = $this['ConnectionController'];
+	$checkAccountCreation = $controller->checkAccountCreation($request, $response, $args);
+	$router = $this->router;
+	return $response->withRedirect($router->pathFor('HomeConnect', []));
+})->setName("checkAccountCreation");
+
 $app->get('/Connection', 'ConnectionController:displayConnection')->setName("Connection");
 
+$app->get('/HomeConnect', function($request, $response, $args){
+	// if (Authentication::checkConnection()) {
+		$controller = $this['HomeController'];
+		$displayHomeConnect = $controller->displayHomeConnect($request, $response, $args);
+	// }
+	// else {
+	// 	$router = $this->router;
+	// 	return $response->withRedirect($router->pathFor('Home', []));
+	// }
+})->setName('HomeConnect');
 
 $app->get('/Disconnection', function($request, $response, $args){
 	$controller = $this['EXEMPLEController'];
