@@ -1,0 +1,10 @@
+{% extends 'layouts/master.twig' %}
+
+{% block content %}
+<div class="screen">
+    <h2>{{ ao.titre }}</h2>
+    <p class="description">{{ ao.description }}</p>
+    <p class="cahier_charges">{{ ao.contenu }}</p>
+    <a href="{{ base_url() }}/AppelOffre{{ ao.id }}/repondre" class="button">Répondre<a>
+</div>
+{% endblock %}

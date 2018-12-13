@@ -72,5 +72,10 @@ $app->get('/Disconnection', function($request, $response, $args){
 	return $response->withRedirect($router->pathFor('Home', []));
 })->setName('Disconnection');
 
+$app->get('/Consulter', 'AppelsOffresController:displayListPage')->setName('Consulter');
+
+$app->get('/AppelOffre:id', function($request, $response, $args){
+	$this['AppelsOffresController']->displayAppelOffrePage($args['id'], $response);
+})->setName('Appeloffre');
 
 $app->run();

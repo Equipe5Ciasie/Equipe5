@@ -1,0 +1,9 @@
+{% extends 'layouts/master.twig' %}
+
+{% block content %}
+    <div class="grid_container_item">
+        {% for ao in appels_offres %}
+        {% include 'partials/AppelOffre.twig' %}
+        {% endfor %}
+	</div>
+{% endblock %}

@@ -21,6 +21,8 @@ CREATE TABLE `appels_offres`(
     `user_id` int(11) NOT NULL,
     PRIMARY KEY (`id`)
 );
+INSERT INTO `appels_offres`(`id`, `titre`, `description`, `contenu`, `user_id`) VALUES
+(1, "Un appel d'offre", 'Sa description', 'Son contenu', 1);
 
 -- table METIERS
 DROP TABLE IF EXISTS `metiers`;

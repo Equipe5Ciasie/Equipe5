@@ -1,5 +1,7 @@
-<div class="appel_offre">
-    <h2 class="nom">{{ nom }}</h2>
-    <hr/>
-    <p class="description">{{ description }}</p>
-</div>
+<a href="{{ base_url() }}/AppelOffre{{ ao.id }}" class="appel_offre">
+    <div class="screen">
+        <h2 class="nom">{{ ao.titre }}</h2>
+        <br>
+        <p class="description">{{ ao.description }}</p>
+    </div>
+</a>
