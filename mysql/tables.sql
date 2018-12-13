@@ -5,6 +5,7 @@ CREATE TABLE `users`(
     `email` text NOT NULL,
     `password` char(128) NOT NULL,
     `account_type` int(11) NOT NULL, 
+    `metier_id` int(11) NOT NULL,
     PRIMARY KEY (`id`)
 );
 INSERT INTO `users`(`id`, `email`, `password`, `account_type`) VALUES
