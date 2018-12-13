@@ -36,11 +36,12 @@ $container['HomeController'] = function ($c){
 
 $container['ConnectionController'] = function ($c){
     $view = $c->get('view');
-    return new ConnectionController($view);
+    
+    return new ConnectionController($view, $c);
 };
 
 $container['AppelsOffresController'] = function($c){
     $view = $c->get('view');
-    return new AppelsOffresController($view);
+    return new AppelsOffresController($view, $c);
 }
 ?>

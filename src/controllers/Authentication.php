@@ -12,9 +12,9 @@ class Authentication {
      * @param idPlayer
      * @param pseudoPlayer
      */ 
-    public static function instantiateSession($email){
-      $_SESSION['email'] = $email;
-      
+    public static function instantiateSession($user){
+      $_SESSION['id'] = $user->id;
+      $_SESSION['email'] = $user->email;
     }
     
     // Method that checks a connection

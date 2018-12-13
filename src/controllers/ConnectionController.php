@@ -14,14 +14,14 @@ use equipe5\models\User;
  */
 class ConnectionController {
 
-	protected $view;
+	protected $view, $flash;
 
 	/**
 	 * Constructor of the class ConnectionController
 	 * @param view
 	 */
     public function __construct(twig $view) {
-        $this->view = $view;
+		$this->view = $view;
     }
 
 	/**
@@ -31,7 +31,11 @@ class ConnectionController {
 	 * @param args
 	 */
 	public function displayConnection($request, $response, $args) {
-		return $this->view->render($response, 'ConnexionView.html.twig');
+		$flash = [];
+		if(isset($_SESSION['slim.flash']['error'])){
+			$flash = $_SESSION['slim.flash']['error'];
+		}
+		return $this->view->render($response, 'ConnexionView.html.twig', ['error' => $flash]);
 	}
 
 	/**
@@ -78,24 +82,17 @@ class ConnectionController {
 
 	// Method that checks the connection
 	public static function checkTheConnection(){
-		
-
-		$mail = filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
-        $password = filter_var($_POST['password'],FILTER_SANITIZE_STRING);
-
-		$user = User::where('email', '=', $mail);
-		if ($user->count() != 1) {
-			echo "Email invalide";
-		} else {	
-			if (password_verify($password, $user->first()->password)) {
-				$user = $user->first();
-				Authentication::instantiateSession($user->email);
+		$user = User::byMail(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
+		if ($user) {
+			if (password_verify($_POST['password'], $user->password)) {
+				Authentication::instantiateSession($user);
+				return true;
 			} else {
-				echo "Mot de passe invalide";
+				return false;
 			}
+		} else {	
+			return false;
         }
-
-
 	}
 
 	/**

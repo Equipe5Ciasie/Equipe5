@@ -36,6 +36,11 @@ require('container.php');
 
 $app = new \Slim\App($container);
 
+$container = $app->getContainer();
+$container['flash'] = function(){
+	return new \Slim\Flash\Messages();
+};
+
 $app->get('/', 'HomeController:displayHome')->setName('Home');
 
 $app->get('/CreateAccount', 'ConnectionController:displayCreateAccount')->setName('CreateAccount');
@@ -50,10 +55,12 @@ $app->post('/CreateAccount', function($request, $response, $args){
 $app->get('/Connection', 'ConnectionController:displayConnection')->setName("Connection");
 
 $app->post('/Connection', function($request, $response, $args){
-	$controller = $this['ConnectionController'];
-	$checkConnection = $controller->checkTheConnection($request, $response, $args);
-	$router = $this->router;
-	return $response->withRedirect($router->pathFor('HomeConnect', []));
+	if($this['ConnectionController']->checkTheConnection($request, $response, $args)){
+		return $response->withRedirect($this->router->pathFor('HomeConnect'));
+	} else {
+		$this->flash->addMessage('error', "Adresse email ou mot de passe invalide.");
+		return $response->withRedirect($this->router->pathFor('Connection'));
+	}
 })->setName("checkAccountCreation");
 
 $app->get('/HomeConnect', function($request, $response, $args){
