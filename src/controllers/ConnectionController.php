@@ -75,7 +75,7 @@ class ConnectionController {
 		var_dump($mdp,$email,$type,$siret,$nom,$adresse);
 
 		// Function that allows password hashing
-		$mdp = password_hash($_POST['mdp'], PASSWORD_BCRYPT);
+		$mdp = password_hash($_POST['password'], PASSWORD_BCRYPT);
 		self::createUser( $mdp, $email,$type,$siret,$nom);
 		self::checkTheConnection();
 	}
