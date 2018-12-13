@@ -30,12 +30,6 @@ class ConnectionController {
 	 * @param args
 	 */
 	public function displayConnection($request, $response, $args) {
-		// if (Authentication::checkConnection()) {
-		// 	$pseudo = "Bienvenue ".$_SESSION['pseudoPlayer'];
-		// }
-		// else {
-		// 	$pseudo = "";
-		// }
 		return $this->view->render($response, 'ConnexionView.html.twig');
 	}
 
@@ -106,5 +100,7 @@ class ConnectionController {
 	public function displayCreateAccount($request, $response, $args) {
 		return $this->view->render($response, 'CreateAccountView.html.twig', []);
     }
+
+
 
 }
