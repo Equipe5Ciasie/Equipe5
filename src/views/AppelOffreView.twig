@@ -5,6 +5,8 @@
     <h2>{{ ao.titre }}</h2>
     <p class="description">{{ ao.description }}</p>
     <p class="cahier_charges">{{ ao.contenu }}</p>
+    {% if type == 2 %}
     <a href="{{ base_url() }}/AppelsOffres/{{ ao.id }}/repondre"><button class="button">Répondre</button><a>
+    {% endif %}
 </div>
 {% endblock %}

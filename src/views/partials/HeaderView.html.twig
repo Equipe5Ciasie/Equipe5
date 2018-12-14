@@ -29,10 +29,14 @@
 		<nav class="nav_menu">
 		 	<ul class="list_grid_menu">
 				<a class="homeButton fas fa-home" href="{{base_url()}}/"></a>
+				{% if type == 3 %}
+				<li ><a href="{{base_url()}}/AppelsOffres">Créer Appel Offre</a></li>
+				{% else %}
 				<li ><a href="{{base_url()}}/AppelsOffres">Consulter Appels Offres</a></li>
+				{% endif %}
 			</ul>
 		</nav>
-				{% if roleMember == 1 %}
+				{% if type == 1 %}
 				<li><a href="{{base_url()}}/AdminPrestations">Admin Prestations</a></li>
 				{% endif %}
 			</ul>

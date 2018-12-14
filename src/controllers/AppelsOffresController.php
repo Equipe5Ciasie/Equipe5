@@ -15,14 +15,47 @@ class AppelsOffresController {
     }
 
     public function displayListPage($request, $response, $args){
-        return $this->view->render($response, 'BrowseAppelsOffres.twig', ['appels_offres' => AO::all()]);
+        if (Authentication::checkConnection()!=false) {
+            $email = $_SESSION['email'];
+            $type = $_SESSION['type'];
+         } else {
+             $email = "";
+             $type = 0;
+         }
+        return $this->view->render($response, 'BrowseAppelsOffres.twig', [
+        'appels_offres' => AO::all(),
+        'email' => $email,
+        'type' => $type,
+        ]);
     }
 
     public function displayAppelOffrePage($request, $response, $args){
-        return $this->view->render($response, 'AppelOffreView.twig', ['ao' => AO::byId($args)]);
+        if (Authentication::checkConnection()!=false) {
+            $email = $_SESSION['email'];
+            $type = $_SESSION['type'];
+         } else {
+             $email = "";
+             $type = 0;
+         }
+        return $this->view->render($response, 'AppelOffreView.twig', [
+            'ao' => AO::byId($args),
+            'email' => $email,
+            'type' => $type,
+            ]);
     }
 
     public function displayAnswerForm($request, $response, $args){
-        return $this->view->render($response, 'ReponseAppelOffre.twig', ['ao_id' => $args]);
+        if (Authentication::checkConnection()!=false) {
+            $email = $_SESSION['email'];
+            $type = $_SESSION['type'];
+         } else {
+             $email = "";
+             $type = 0;
+         }
+        return $this->view->render($response, 'ReponseAppelOffre.twig', [
+            'ao_id' => $args,
+            'email' => $email,
+            'type' => $type,
+            ]);
     }
 }
