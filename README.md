@@ -2,7 +2,7 @@
 
 # Installation
   
-  * Cloner le repo dans le www de wamp puis se rendre à sa racine
+  * Cloner le repo dans votre dossier racine
   * [Installer Composer](https://getcomposer.org/download/)
   * Lancer composer install pour installer les dépendances
   * Importer le fichier "mysql/tables.sql" dans votre base de données
@@ -15,10 +15,3 @@
       username = "root"
       password = ""
       ```
-  * Le site est disponible à l'adresse suivante  [http://localhost/Equipe5/](http://localhost/Equipe5/)
-      
-  
-      
-      
-
-  
