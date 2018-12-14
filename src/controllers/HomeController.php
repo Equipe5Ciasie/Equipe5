@@ -30,14 +30,5 @@ class HomeController {
             'type' => $type,
         ]);
     }
-
-    public function displayVosOffres($request, $response, $args) {
-        
-            return $this->view->render($response, 'HomeOffre.html.twig', [
-                'email' => $_SESSION['email'],
-                'type' => $_SESSION['type'],
-			]);
-            }
-
 	
 }

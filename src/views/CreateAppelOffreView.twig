@@ -1,0 +1,19 @@
+{% extends 'layouts/master.twig' %}
+
+{% block content %}
+<div class="screen">
+    <form action="#" method="POST">
+        <label for="titre"></label>
+        <input type="text" name="titre" placeholder="titre">
+        <br>
+        <label for="description"></label>
+        <input type="text" name="description" placeholder="description">
+        <br>
+        <label for="contenu"></label>
+        <input type="text" name="contenu" placeholder="contenu">
+        <br>
+
+        <button type="submit" class="boutton">Soumettre la réponse</button>
+    </form>
+</div>
+{% endblock %}

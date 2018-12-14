@@ -77,6 +77,7 @@ class ConnectionController {
 		$MOA->save();
 	}
 
+
 	// Method that checks the creating of an account
 	public static function checkAccountCreation() {
 		

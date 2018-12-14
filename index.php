@@ -47,9 +47,10 @@ $app->post('/Connection', function($request, $response, $args){
 
 $app->get('/HomeConnect', function($request, $response, $args){
 	 if (Authentication::checkConnection()!=false) {
-		$controller = $this['HomeController'];
-		if($_SESSION["type"]==3)
+		if($_SESSION["type"]==3){
+			$controller = $this['AppelsOffresController'];
 			$displayHomeConnect = $controller->displayVosOffres($request, $response, $args);
+		}
 		else if(($_SESSION["type"]==2)){
 			$router = $this->router;
 			return $response->withRedirect($router->pathFor('Consulter', []));
@@ -76,5 +77,14 @@ $app->get('/AppelsOffres/{id}', function($request, $response, $args){
 })->setName('Appeloffre');
 
 $app->get('/AppelsOffres/{id}/repondre', 'AppelsOffresController:displayAnswerForm')->setName('RepondreAppelOffre');
+
+$app->get('/CreateAppelOffre', 'AppelsOffresController:displayCreateAppelOffre')->setName('CreateAppelOffre');
+
+$app->post('/CreateAppelOffre', function($request, $response, $args){
+	$controller = $this['AppelsOffresController'];
+	$checkAccountCreation = $controller->CreateAppelOffre($request, $response, $args);
+	$router = $this->router;
+	return $response->withRedirect($router->pathFor('HomeConnect', []));
+})->setName("checkAppelOffreCreation");
 
 $app->run();

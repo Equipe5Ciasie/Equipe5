@@ -2,5 +2,9 @@
         
 {% block content %}
 <h2> Vos Contrats</h2>
-</div>
+    <div class="grid_container_item">
+        {% for ao in appels_offres %}
+        {% include 'partials/AppelOffre.twig' with {"ao": ao} %}
+        {% endfor %}
+	</div>
 {% endblock %}
