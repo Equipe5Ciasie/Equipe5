@@ -3,29 +3,11 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 use Illuminate\Database\Capsule\Manager as DB;
-use equipe5\bd\Connection;
-use equipe5\controllers\Authentication;
-// use equipe5\controllers\ConnectionController;
-
-
-
-Connection::setConfig('src/conf/conf.ini');
-$db = Connection::makeConnection();
-
-$ini = parse_ini_file('src/conf/conf.ini');
+use equipe5\controllers\Authentication as Authentication;
 
 $db = new DB();
 
-$db->addConnection([
-	'driver' => $ini['driver'],
-	'host' => $ini['host'],
-	'database' => $ini['dbname'],
-	'username' => $ini['username'],
-	'password' => $ini['password'],
-	'charset' => 'utf8',
-	'collation' => 'utf8_unicode_ci',
-	'prefix' => ''
-]);
+$db->addConnection(parse_ini_file('src/conf/conf.ini'));
 
 $db->setAsGlobal();
 $db->bootEloquent();
