@@ -87,4 +87,6 @@ $app->post('/CreateAppelOffre', function($request, $response, $args){
 	return $response->withRedirect($router->pathFor('HomeConnect', []));
 })->setName("checkAppelOffreCreation");
 
+$app->get('/User/{id}', 'UsersController:displayUser')->setName('CreateAccount');
+
 $app->run();

@@ -1,0 +1,15 @@
+{% extends 'layouts/master.twig' %}
+
+{% block content %}
+<div class="screen">
+        <p>Nom : {{user.nom}}</p>
+        <p>Siret : {{user.siret}}</p>
+        <p>Email : {{user.email}}</p>
+        {% if user.account_type == 2 %}
+            <p>Domaine : {{user.detail.domaine}}</p>
+        {% endif %}
+        {% if user.account_type == 3 %}
+            <p>Ville : {{user.detail.ville}}</p>
+        {% endif %}
+</div>
+{% endblock %}

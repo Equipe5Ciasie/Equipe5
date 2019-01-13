@@ -5,6 +5,7 @@
     <h2>{{ ao.titre }}</h2>
     <p class="description">{{ ao.description }}</p>
     <p class="cahier_charges">{{ ao.contenu }}</p>
+    <p class="maitre_oeuvre"><a href="{{base_url()}}/User/{{ao.user_id}}" style="color:orange;text-decoration:underline">Maitre d'oeuvre</a></p>
     {% if type == 2 %}
     <a href="{{ base_url() }}/AppelsOffres/{{ ao.id }}/repondre"><button class="button">Répondre</button><a>
     {% endif %}

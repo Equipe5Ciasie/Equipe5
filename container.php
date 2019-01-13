@@ -5,7 +5,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 use equipe5\controllers\HomeController as HomeController;
 use equipe5\controllers\ConnectionController as ConnectionController;
 use equipe5\controllers\AppelsOffresController as AppelsOffresController;
-
+use equipe5\controllers\UsersController as UsersController;
 
 $configuration = [
     'settings' => [
@@ -43,5 +43,10 @@ $container['ConnectionController'] = function ($c){
 $container['AppelsOffresController'] = function($c){
     $view = $c->get('view');
     return new AppelsOffresController($view, $c);
-}
+};
+
+$container['UsersController'] = function($c){
+    $view = $c->get('view');
+    return new UsersController($view, $c);
+};
 ?>
