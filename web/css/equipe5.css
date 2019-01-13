@@ -157,7 +157,7 @@ header {
   background-color: #23272A;
   padding: 1em;
   box-shadow: -1px 2px 10px 3px rgba(0, 0, 0, 0.3) inset;
-  
+  box-sizing: border-box;
 }
 header .container_header {
   width: 70%;
@@ -1012,7 +1012,7 @@ header .container_header .list_grid_menu a {
 }
 
 
-input{
+input,textarea{
   padding: 1em;
   background-color: rgba(0,0,0,0);
   color: #99AAB5;
@@ -1024,13 +1024,13 @@ input{
   margin-top: 1em;
 }
 
-input:focus{
+input:focus,textarea:focus{
   border-color: #3CBC8D;
   transition: 1s;
   color: #3CBC8D;
 }
 
-input:focus::placeholder{
+input:focus::placeholder,textarea:focus::placeholder{
   color: #3CBC8D;
   transition: 1s;
 }
