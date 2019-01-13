@@ -87,6 +87,23 @@ $app->post('/CreateAppelOffre', function($request, $response, $args){
 	return $response->withRedirect($router->pathFor('HomeConnect', []));
 })->setName("checkAppelOffreCreation");
 
-$app->get('/User/{id}', 'UsersController:displayUser')->setName('CreateAccount');
+$app->get('/User/{id}', 'UsersController:displayUser')->setName('viewUser');
+
+$app->get('/User/{id}/modif', function($request, $response, $args){
+	if (Authentication::checkConnection()!=false && $_SESSION["id"]==$args["id"]) {
+			$controller = $this['UsersController'];
+			$controller->displayModifUser($request, $response, $args);
+	}else{
+	$router = $this->router;
+	return $response->withRedirect($router->pathFor('viewUser', ["id"=>$args["id"]]));
+	}
+})->setName("checkAppelOffreCreation");
+
+$app->post('/User/{id}/modif', function($request, $response, $args){
+	$controller = $this['UsersController'];
+	$controller->modifUser($request, $response, $args);
+	$router = $this->router;
+	return $response->withRedirect($router->pathFor('viewUser', ["id"=>$args["id"]]));
+})->setName("checkAppelOffreCreation");
 
 $app->run();

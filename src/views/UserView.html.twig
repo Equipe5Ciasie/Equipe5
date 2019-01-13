@@ -11,5 +11,8 @@
         {% if user.account_type == 3 %}
             <p>Ville : {{user.detail.ville}}</p>
         {% endif %}
+        {% if user.id == id %}
+            <a href="{{ base_url() }}/User/{{id}}/modif"><button class="button">Modifier information</button><a>
+        {% endif %}
 </div>
 {% endblock %}

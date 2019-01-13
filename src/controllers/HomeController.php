@@ -18,16 +18,19 @@ class HomeController {
 
 	public function displayHome($request, $response,$args) {
         
-		if (Authentication::checkConnection()!=false) {
+		if (Authentication::checkConnection() != false) {
             $email = $_SESSION['email'];
             $type = $_SESSION['type'];
-         } else {
-             $email = "";
-             $type = 0;
-         }
+            $id = $_SESSION['id'];
+        } else {
+            $email = "";
+            $type = 0;
+            $id=0;
+        }
 		return $this->view->render($response, 'HomeView.html.twig', [
             'email' => $email,
             'type' => $type,
+            "id"=>$id
         ]);
     }
 	

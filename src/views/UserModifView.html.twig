@@ -1,0 +1,36 @@
+{% extends 'layouts/master.twig' %}
+
+{% block content %}
+    <div class="main_container">
+    <div class ="screen">
+    <form class="formMenu" id="formUser" action="" method="post">
+			<p>
+            	<label for="nom" class="labelnom"></label>
+            	<input type="text" name="nom" class="nom" placeholder="Nom..." value="{{user.nom}}"></input>
+        	</p>
+			<p>
+            	<label for="siret" class="labelsiret"></label>
+            	<input type="text" name="siret" class="siret" placeholder="N°Siret" value="{{user.siret}}"></input>
+        	</p>
+            <p>
+            	<label for="email" class="labelemail"></label>
+            	<input type="text" name="email" class="email" placeholder="Email de contact"  value="{{user.email}}"></input>
+        	</p>
+             {% if user.account_type == 2 %}
+			<p>
+            	<label for="domaine" class="labeldomaine"></label>
+            	<input type="text" name="domaine" class="domaine" placeholder="domaine de l'entreprise"  value="{{user.detail.domaine}}"></input>
+        	</p>
+            {% endif %}
+            {% if user.account_type == 3 %}>
+			<p>
+            	<label for="ville" class="labelville"></label>
+            	<input type="text" name="ville" class="ville" placeholder="ville de l'entreprise"  value="{{user.detail.ville}}"></input>
+        	</p>
+            {% endif %}
+			<button type="submit" class="boutton">Valider</button>
+			<br><br>
+	 	</form>
+         <div>
+    </div>
+{% endblock %}
