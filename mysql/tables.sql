@@ -57,7 +57,8 @@ INSERT INTO `metiers`(`id`, `nom`) VALUES
 DROP TABLE IF EXISTS `reponses`;
 CREATE TABLE `reponses`(
     `id` int(11) not null AUTO_INCREMENT,
-    `id_entreprise` int(11),
+    `appel_id` int(11),
+    `user_id` int(11),
     `contenu` text,
     primary key (`id`)
 );

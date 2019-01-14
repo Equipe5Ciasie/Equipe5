@@ -5,6 +5,7 @@ namespace equipe5\controllers;
 use \Slim\Views\Twig as twig;
 use equipe5\models\User as User;
 use equipe5\models\Appel_offres as AO;
+use equipe5\models\Reponse as Reponse;
 
 class AppelsOffresController {
 
@@ -101,5 +102,12 @@ class AppelsOffresController {
             'type' => $type,
             "id"=>$id
             ]);
+    }
+
+    public function postResponse($id_appel){
+        if(!empty($_POST['contenu'])){
+            $rep = new Reponse();
+          
+        }
     }
 }
