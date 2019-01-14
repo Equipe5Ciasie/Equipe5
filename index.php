@@ -113,4 +113,7 @@ $app->post('/response/{id}', function($request, $response, $args){
 	return $response->withRedirect($router->pathFor('Appeloffre', ["id" => $args['id']]));
 })->setName('responseAppel');
 
+$app->get('/reponse/{id}', 'AppelsOffresController:displayReponse')->setName('viewReponse');
+
+
 $app->run();
