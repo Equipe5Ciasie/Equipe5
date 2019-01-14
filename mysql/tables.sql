@@ -52,3 +52,12 @@ INSERT INTO `metiers`(`id`, `nom`) VALUES
 (2, "Masson"),
 (3, "Bureau d'étude"),
 (4, "Maire");
+
+--table Reponse
+DROP TABLE IF EXISTS `reponses`;
+CREATE TABLE `reponses`(
+    `id` int(11) not null AUTO_INCREMENT,
+    `id_entreprise` int(11),
+    `contenu` text,
+    primary key (`id`)
+);
