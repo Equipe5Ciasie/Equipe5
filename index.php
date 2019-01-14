@@ -106,4 +106,11 @@ $app->post('/User/{id}/modif', function($request, $response, $args){
 	return $response->withRedirect($router->pathFor('viewUser', ["id"=>$args["id"]]));
 })->setName("checkAppelOffreCreation");
 
+$app->post('/response/{id}', function($request, $response, $args){
+	$controller = $this['AppelsOffresController'];
+	$controller->postResponse($request, $response, $args);
+	$router = $this->router;
+	return $response->withRedirect($router->pathFor('Appeloffre', ["id" => $args['id']]));
+})->setName('responseAppel');
+
 $app->run();

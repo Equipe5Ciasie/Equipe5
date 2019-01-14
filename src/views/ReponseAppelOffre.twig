@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="screen">
-    <form action="#" method="POST">
+    <form action="{{ base_url() }}/response/{{ ao_id}}" method="POST">
         <label for="libelle"></label>
         <input type="text" name="libelle">
         <br>

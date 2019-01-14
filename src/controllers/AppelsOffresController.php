@@ -97,17 +97,21 @@ class AppelsOffresController {
             $id=0;
         }
         return $this->view->render($response, 'ReponseAppelOffre.twig', [
-            'ao_id' => $args,
+            'ao_id' => $args['id'],
             'email' => $email,
             'type' => $type,
             "id"=>$id
             ]);
     }
 
-    public function postResponse($id_appel){
+    public function postResponse($request, $response, $args){
         if(!empty($_POST['contenu'])){
             $rep = new Reponse();
-          
+            $rep->user_id = $_SESSION['id'];
+            $rep->appel_id = $args['id'];
+            $rep->contenu = filter_var($_POST['contenu'], FILTER_SANITIZE_STRING);
+            $rep->save();
         }
+
     }
 }
