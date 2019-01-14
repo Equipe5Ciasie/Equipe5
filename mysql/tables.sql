@@ -53,7 +53,7 @@ INSERT INTO `metiers`(`id`, `nom`) VALUES
 (3, "Bureau d'étude"),
 (4, "Maire");
 
---table Reponse
+
 DROP TABLE IF EXISTS `reponses`;
 CREATE TABLE `reponses`(
     `id` int(11) not null AUTO_INCREMENT,

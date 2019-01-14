@@ -5,9 +5,16 @@
     <h2>{{ ao.titre }}</h2>
     <p class="description">{{ ao.description }}</p>
     <p class="cahier_charges">{{ ao.contenu }}</p>
+    {% if type != 3 %}
     <p class="maitre_oeuvre"><a href="{{base_url()}}/User/{{ao.user_id}}" style="color:orange;text-decoration:underline">Maitre d'oeuvre</a></p>
+    {% endif %}
     {% if type == 2 %}
     <a href="{{ base_url() }}/AppelsOffres/{{ ao.id }}/repondre"><button class="boutton">Répondre</button><a>
+    {% endif %}
+    {% if type == 3 %}
+        {% for reponse in reponse %}
+        <p class="rep"><a href="{{base_url()}}/reponse/{{reponse.id}}" style="color:orange;text-decoration:underline">reponse </a></p>
+        {% endfor %}
     {% endif %}
 </div>
 {% endblock %}

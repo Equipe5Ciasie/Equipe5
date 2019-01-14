@@ -1,0 +1,8 @@
+{% extends 'layouts/master.twig' %}
+
+{% block content %}
+<div class="screen">
+    <p class="contenue">{{ reponse.contenu }}</p>
+    <p class="maitre_oeuvre"><a href="{{base_url()}}/User/{{reponse.user_id}}" style="color:orange;text-decoration:underline">Entreprise</a></p>
+</div>
+{% endblock %}

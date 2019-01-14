@@ -44,7 +44,26 @@ class AppelsOffresController {
             $id=0;
         }
         return $this->view->render($response, 'AppelOffreView.twig', [
+            'reponse'=>Reponse::where("appel_id",'=',$args)->get()->toArray(),
             'ao' => AO::byId($args),
+            'email' => $email,
+            "id"=>$id,
+            'type' => $type,
+            ]);
+    }
+
+    public function displayReponse($request, $response, $args){
+        if (Authentication::checkConnection() != false) {
+            $email = $_SESSION['email'];
+            $type = $_SESSION['type'];
+            $id = $_SESSION['id'];
+        } else {
+            $email = "";
+            $type = 0;
+            $id=0;
+        }
+        return $this->view->render($response, 'ReponseView.html.twig', [
+            'reponse'=>Reponse::where("id",'=',$args['id'])->first()->toArray(),
             'email' => $email,
             "id"=>$id,
             'type' => $type,
@@ -103,7 +122,7 @@ class AppelsOffresController {
             "id"=>$id
             ]);
     }
-
+    
     public function postResponse($id_appel){
         if(!empty($_POST['contenu'])){
             $rep = new Reponse();
